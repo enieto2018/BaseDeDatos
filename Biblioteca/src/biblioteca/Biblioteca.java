@@ -27,6 +27,7 @@ public class Biblioteca {
         login.setVisible(true);
         login.setMetodos(metodos);
         System.out.println("MetaDatos de la consulta");
+//      vc.getMetaDataTable("Select * from USUARIO");
         //vc.getMetaDataTable("Select * from SETA.SETA_MA_EQUIPO ");
         vc.closeConexion();
     }

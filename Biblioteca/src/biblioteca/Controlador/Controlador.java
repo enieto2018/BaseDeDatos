@@ -27,6 +27,7 @@ public class Controlador {
         this.conexion = conexion;
     }
 
+    
     public boolean validarLogin(String usuario, String pass) {
         boolean autenticado=false;
         
@@ -41,7 +42,5 @@ public class Controlador {
         }
     return autenticado;
     }
-    
-    
     
 }

@@ -114,6 +114,10 @@ public class Login extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
+        conexionBD vc= new conexionBD();
+        vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP","USERSETA","D4T4C3NT3R");
+        metodos=new Controlador(vc);
+        
         String usuario=txtUsuario.getText();
         String pass=txtContrasena.getText();
         if (metodos.validarLogin(usuario,pass)){
