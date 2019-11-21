@@ -6,7 +6,7 @@
 package biblioteca.Vista;
 
 import biblioteca.Controlador.Controlador;
-import biblioteca.Modelo.conexionBD;
+import biblioteca.Modelo.ConexionBD;
 
 /**
  *
@@ -114,7 +114,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        conexionBD vc= new conexionBD();
+        ConexionBD vc= new ConexionBD();
         vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP","USERSETA","D4T4C3NT3R");
         metodos=new Controlador(vc);
         

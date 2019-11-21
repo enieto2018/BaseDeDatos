@@ -18,7 +18,7 @@ import java.sql.Statement;
  *
  * @author Usuario
  */
-public class conexionBD {
+public class ConexionBD {
     
     private String URLAccess ="jdbc:oracle:thin:@172.17.1.25:1521:INGROUP";
     private String usuario="USERSETA";

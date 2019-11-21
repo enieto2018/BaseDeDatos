@@ -6,8 +6,9 @@
 package biblioteca;
 
 import biblioteca.Controlador.Controlador;
-import biblioteca.Modelo.conexionBD;
+import biblioteca.Modelo.ConexionBD;
 import biblioteca.Vista.Login;
+import biblioteca.Vista.SolicitudLibro;
 
 /**
  *
@@ -20,12 +21,16 @@ public class Biblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        conexionBD vc= new conexionBD();
+        ConexionBD vc= new ConexionBD();
         vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP","USERSETA","D4T4C3NT3R");
         Controlador metodos=new Controlador(vc);
-        Login login =new Login();
-        login.setVisible(true);
-        login.setMetodos(metodos);
+        Controlador capLibro=new Controlador(vc);
+//        Login login =new Login();
+//        login.setVisible(true);
+//       login.setMetodos(metodos);
+        SolicitudLibro solicitudLib =new SolicitudLibro();
+        solicitudLib.setVisible(true);
+        solicitudLib.setCapLibro(capLibro);
         System.out.println("MetaDatos de la consulta");
 //      vc.getMetaDataTable("Select * from USUARIO");
         //vc.getMetaDataTable("Select * from SETA.SETA_MA_EQUIPO ");
