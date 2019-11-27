@@ -64,10 +64,11 @@ public class Controlador {
         List<Libro> listLibros = new ArrayList<>();
         try {
             Statement st = conexion.getConexion().createStatement();
-            ResultSet rs = st.executeQuery("SELECT TITULO FROM LIBRO WHERE TITULO LIKE'%" + titulo + "%'");
-            while(rs.next()){
-                Libro lb=new Libro();
-                lb.setTitulo(rs.getNString(1));
+            ResultSet rs = st.executeQuery("SELECT IDLIBRO,TITULO FROM LIBRO WHERE TITULO LIKE'%" + titulo + "%'");
+            while (rs.next()) {
+                Libro lb = new Libro();
+                lb.setTitulo(rs.getNString(2));
+                lb.setId_libro(rs.getInt(1));
                 listLibros.add(lb);
             }
         } catch (SQLException ex) {
@@ -75,6 +76,21 @@ public class Controlador {
         }
         return listLibros;
 
+    }
+
+    public void registrarSolicitud(int idLibro, String fechaDesde, String fechaHasta) {
+        conexion.sentenciasNoSelect("INSERT INTO SOLICITUD VALUES (" + idLibro 
+                + ",TRUNC(SYSDATE),TO_DATE('" + fechaDesde 
+                + "','DD/MM/YYYY'),TO_DATE('" + fechaHasta 
+                + "','DD/MM/YYYY'),SEQ_IDsolicitud.NEXTVAL)");
+    }
+
+    public ConexionBD getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(ConexionBD conexion) {
+        this.conexion = conexion;
     }
 
 }

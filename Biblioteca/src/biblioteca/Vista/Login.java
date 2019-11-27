@@ -7,6 +7,9 @@ package biblioteca.Vista;
 
 import biblioteca.Controlador.Controlador;
 import biblioteca.Modelo.ConexionBD;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,6 +29,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.repaint();
     }
 
     /**
@@ -37,14 +41,28 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel2 = new java.awt.Panel();
-        txtUsuario = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel() {
+            @Override
+            public void paint(Graphics g){
+                Dimension tamanio = getSize();
+                ImageIcon imagenFondo = new ImageIcon(getClass().getResource("LOGIN.jpg"));
+                g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);
+                setOpaque(false);
+                super.paintComponent(g);
+                super.paint(g);
+            }
+        };
         lblUsuario = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
         lblcontrasena = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("Usuario");
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,8 +70,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        lblUsuario.setText("Usuario");
-
+        lblcontrasena.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblcontrasena.setForeground(new java.awt.Color(255, 255, 255));
         lblcontrasena.setText("Contraseña");
 
         btnAceptar.setText("Aceptar");
@@ -63,50 +81,55 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario)
-                    .addComponent(lblcontrasena))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                    .addComponent(txtContrasena))
-                .addGap(92, 92, 92))
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(btnAceptar)
-                .addContainerGap(154, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(432, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(txtUsuario))))
+                .addGap(212, 212, 212))
         );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuario))
                 .addGap(18, 18, 18)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcontrasena))
-                .addGap(37, 37, 37)
+                .addGap(32, 32, 32)
                 .addComponent(btnAceptar)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -122,6 +145,9 @@ public class Login extends javax.swing.JFrame {
         String pass=txtContrasena.getText();
         if (metodos.validarLogin(usuario,pass)){
             System.out.println("Ingreso Correcto");
+            Solicitud_Prestamo sp = new Solicitud_Prestamo();
+            sp.setVisible(true);
+            this.setVisible(false);
         }else
         {
             System.out.println("Incorrecto");
@@ -136,9 +162,9 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblcontrasena;
-    private java.awt.Panel panel2;
     private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

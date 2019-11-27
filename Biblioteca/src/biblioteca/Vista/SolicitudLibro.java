@@ -10,6 +10,7 @@ import biblioteca.Modelo.Libro;
 import biblioteca.Modelo.ConexionBD;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,6 +59,10 @@ public class SolicitudLibro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtablibros = new javax.swing.JTable();
         btnregistrar = new javax.swing.JButton();
+        lblfechadesde = new javax.swing.JLabel();
+        txtfechaDesde = new javax.swing.JTextField();
+        txtfechaHasta = new javax.swing.JTextField();
+        lblfechaHasta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +89,19 @@ public class SolicitudLibro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtablibros);
 
         btnregistrar.setText("REGISTRAR");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
+
+        lblfechadesde.setText("Fecha Desde");
+
+        txtfechaDesde.setToolTipText("DD/MM/AAAA");
+
+        txtfechaHasta.setToolTipText("DD/MM/AAAA");
+
+        lblfechaHasta.setText("Fecha Hasta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,39 +110,52 @@ public class SolicitudLibro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
-                            .addComponent(jLabel2)))
+                        .addGap(226, 226, 226)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lblnombreLibro)
-                        .addGap(50, 50, 50)
-                        .addComponent(txtnombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(170, 170, 170)
+                        .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(btnregistrar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblnombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblfechadesde, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtfechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblfechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtfechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblnombreLibro)
-                    .addComponent(txtnombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
-                .addComponent(btnBuscar)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblfechadesde)
+                    .addComponent(txtfechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblfechaHasta)
+                    .addComponent(txtfechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnregistrar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -135,7 +166,7 @@ public class SolicitudLibro extends javax.swing.JFrame {
 
         ConexionBD vc = new ConexionBD();
         vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP", "USERSETA", "D4T4C3NT3R");
-        setCapLibro(new Controlador(vc));
+        capLibro.setConexion(vc);
         String nombreLibro = txtnombreLibro.getText();
 
         List<Libro> list = getCapLibro().listaLibros(nombreLibro);
@@ -149,17 +180,24 @@ public class SolicitudLibro extends javax.swing.JFrame {
             }
 
             String[][] celdas = new String[list.size()][6];
-            DefaultTableModel tmTablaLibros;
 
             for (int i = 0; i < celdas.length; i++) {
                 celdas[i][3] = list.get(i).getTitulo();
+                celdas[i][1]= String.valueOf(list.get(i).getId_libro());
 
             }
 
-            tmTablaLibros = new DefaultTableModel(celdas, new String[]{
+            DefaultTableModel tmTablaLibros = new DefaultTableModel(celdas, new String[]{
                 "Id_Biblioteca", "Id_Libro", "Id_Satelite", "Titulo", "Edicion", "Disponible"
-            });
-            
+            }) {
+
+                @Override
+                public boolean isCellEditable(int row, int column){
+                    return false;
+                }
+                
+            };
+
             jtablibros.setModel(tmTablaLibros);
 //            tmTablaLibros.fireTableDataChanged();
 //            jtablibros.repaint();
@@ -169,13 +207,43 @@ public class SolicitudLibro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        // TODO add your handling code here:
+        ConexionBD vc = new ConexionBD();
+        vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP", "USERSETA", "D4T4C3NT3R");
+        capLibro.setConexion(vc);
+        
+        int indexFilSelect=jtablibros.getSelectedRow();
+        
+        if(indexFilSelect!=-1){
+            String idlibro = String.valueOf(jtablibros.getModel().getValueAt(jtablibros.getSelectedRow(), 1));
+        String fechadesde= txtfechaDesde.getText();
+        String fechahasta= txtfechaHasta.getText();
+        
+        capLibro.registrarSolicitud(Integer.parseInt(idlibro), fechadesde, fechahasta);
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Debe Seleccionar una fila");
+        }
+        
+        
+        
+        
+        
+      
+    }//GEN-LAST:event_btnregistrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtablibros;
+    private javax.swing.JLabel lblfechaHasta;
+    private javax.swing.JLabel lblfechadesde;
     private javax.swing.JLabel lblnombreLibro;
+    private javax.swing.JTextField txtfechaDesde;
+    private javax.swing.JTextField txtfechaHasta;
     private javax.swing.JTextField txtnombreLibro;
     // End of variables declaration//GEN-END:variables
 }
