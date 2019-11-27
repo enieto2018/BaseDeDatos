@@ -30,82 +30,129 @@ public class SolicitudPrestamo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblid_solicitud = new javax.swing.JLabel();
         txt_idsolicitud = new javax.swing.JTextField();
+        lblfechaentrega = new javax.swing.JLabel();
+        txtfechaentrega = new javax.swing.JTextField();
+        lblfechadevolucion = new javax.swing.JLabel();
+        txtfechadevolucion = new javax.swing.JTextField();
+        lblidusuario = new javax.swing.JLabel();
+        txtusuario = new javax.swing.JTextField();
+        txtfechasalida = new javax.swing.JTextField();
+        lblfechasalida = new javax.swing.JLabel();
+        btnregistrarprestamo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("SOLICITUD PRESTAMO");
+        jLabel1.setText("PRESTAMO");
 
         lblid_solicitud.setText("IdSolicitud");
+
+        lblfechaentrega.setText("Fecha Entrega");
+
+        lblfechadevolucion.setText("Fecha Devolucion");
+
+        lblidusuario.setText("IdUsuario");
+
+        lblfechasalida.setText("Fecha Salida");
+
+        btnregistrarprestamo.setText("REGISTRAR");
+
+        jLabel2.setText("IdLibro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(btnregistrarprestamo))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblidusuario)
+                            .addComponent(lblid_solicitud))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_idsolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(txtusuario)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(lblid_solicitud)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblfechadevolucion)
+                            .addComponent(lblfechasalida))
                         .addGap(18, 18, 18)
-                        .addComponent(txt_idsolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfechadevolucion)
+                            .addComponent(txtfechasalida)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblfechaentrega)
+                            .addComponent(jLabel2))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtfechaentrega)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblid_solicitud)
                     .addComponent(txt_idsolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblidusuario)
+                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblfechaentrega)
+                    .addComponent(txtfechaentrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblfechadevolucion)
+                    .addComponent(txtfechadevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfechasalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblfechasalida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnregistrarprestamo)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SolicitudPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SolicitudPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SolicitudPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SolicitudPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SolicitudPrestamo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnregistrarprestamo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblfechadevolucion;
+    private javax.swing.JLabel lblfechaentrega;
+    private javax.swing.JLabel lblfechasalida;
     private javax.swing.JLabel lblid_solicitud;
+    private javax.swing.JLabel lblidusuario;
     private javax.swing.JTextField txt_idsolicitud;
+    private javax.swing.JTextField txtfechadevolucion;
+    private javax.swing.JTextField txtfechaentrega;
+    private javax.swing.JTextField txtfechasalida;
+    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }

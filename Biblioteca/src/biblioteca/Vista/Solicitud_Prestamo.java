@@ -56,6 +56,11 @@ public class Solicitud_Prestamo extends javax.swing.JFrame {
         });
 
         btnprestamo.setText("PRESTAMO");
+        btnprestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnprestamoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,14 +105,18 @@ public class Solicitud_Prestamo extends javax.swing.JFrame {
 
     private void btnsolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsolicitudActionPerformed
         // TODO add your handling code here:
-        
-        
         SolicitudLibro solicitudLib = new SolicitudLibro();
         solicitudLib.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnsolicitudActionPerformed
 
- 
+    private void btnprestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprestamoActionPerformed
+        // TODO add your handling code here:
+        SolicitudPrestamo solicitudLibPres = new SolicitudPrestamo();
+        solicitudLibPres.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnprestamoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnprestamo;
