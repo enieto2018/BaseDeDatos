@@ -179,7 +179,7 @@ public class SolicitudPrestamo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Las fechas de Salida y Devolución son obligatorias",":(",JOptionPane.ERROR_MESSAGE);
         }
         
-        controlador.registrarPrestamo(idRecurso, fechaDesde, fechaHasta, idUsuario);
+ 
         
     }//GEN-LAST:event_btnRegistrarPrestamoActionPerformed
 

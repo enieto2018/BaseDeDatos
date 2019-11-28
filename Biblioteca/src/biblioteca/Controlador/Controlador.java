@@ -82,6 +82,15 @@ public class Controlador {
 
     }
 
+    /**
+     * Metodo que registra en Base de datos una solicitud 
+     * @param idLibro : identificador del recurso asociado al prestamo
+     * @param fechaDesde : Fecha inicial qeu
+     * @param fechaHasta
+     * @param idUsuario
+     * @param idBiblioteca
+     * @param idSatelite 
+     */
     public void registrarSolicitud(int idLibro, String fechaDesde, String fechaHasta, int idUsuario,
             int idBiblioteca, int idSatelite) {
         conexion.sentenciasNoSelect("INSERT INTO SOLICITUD VALUES (" + idLibro
@@ -92,7 +101,14 @@ public class Controlador {
     }
     
     
-    
+    /**
+     * Metodo que registra un prestamo en Base de datos.
+     * @param idLibro : identificador del recurso asociado al prestamo
+     * @param fechaDesde : Fecha inicial del prestamo
+     * @param fechaHasta : Fecha limite para entragar el libro o renovarlo
+     * @param idUsuario  : identificador del usuario que realizó la solicitud y 
+     * con el cual av a quedar registrado el prestamo
+     */
     public void registrarPrestamo(int idLibro, String fechaDesde, String fechaHasta,int idUsuario) {
         conexion.sentenciasNoSelect("INSERT INTO PRESTAMO (ID, FECHA_SALIDA, FECHA_DEVOLUCION, USUARIO_ID) "
                 + "VALUES (SEQ_PRESTAMO.NEXTVAL"
@@ -103,7 +119,11 @@ public class Controlador {
 
     
     
-    
+    /**
+     * Metodo que busca en Base de datos una solicitud por el identificador
+     * @param solicitudId : Identiicador de la solicutd a ser buscada
+     * @return Un objeto de tipo solicitud
+     */
     public Solicitud findSolicitudById(int solicitudId){
         Solicitud solicitud = null;
         
