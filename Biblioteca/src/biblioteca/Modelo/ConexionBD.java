@@ -93,6 +93,20 @@ public class ConexionBD {
           System.out.println("Error x "+e.toString());
         }
     }
+	
+	public void setConexionOracleXDefecto (){
+        try{
+            setURLAccess(URLAccess);
+            setUsuario(usuario);
+            setContrasena(contrasena);
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conexion=DriverManager.getConnection(URLAccess,usuario,contrasena);
+            System.out.println("Conexion Exitosa. URL: "+URLAccess+" - Usuario :"+usuario);
+        }catch (ClassNotFoundException | SQLException e){
+          System.out.println("Error x "+e.toString());
+        }
+    }
+	
     public void closeConexion(){
         try{
             conexion.close();

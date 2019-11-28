@@ -5,6 +5,7 @@
  */
 package biblioteca.Vista;
 
+import biblioteca.Controlador.Controlador;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -14,6 +15,10 @@ import javax.swing.ImageIcon;
  * @author Usuario
  */
 public class Solicitud_Prestamo extends javax.swing.JFrame {
+
+    Controlador controlador;
+    
+    int idUsuario;
 
     /**
      * Creates new form Solicitud_Prestamo
@@ -107,13 +112,18 @@ public class Solicitud_Prestamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         SolicitudLibro solicitudLib = new SolicitudLibro();
         solicitudLib.setVisible(true);
+        solicitudLib.setCapLibro(controlador);
+        solicitudLib.setIdUsuario(idUsuario);
         this.setVisible(false);
     }//GEN-LAST:event_btnsolicitudActionPerformed
 
     private void btnprestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprestamoActionPerformed
         // TODO add your handling code here:
+
         SolicitudPrestamo solicitudLibPres = new SolicitudPrestamo();
         solicitudLibPres.setVisible(true);
+        solicitudLibPres.setControlador(controlador);
+        solicitudLibPres.setIdUsuario(idUsuario);
         this.setVisible(false);
     }//GEN-LAST:event_btnprestamoActionPerformed
 
@@ -123,4 +133,22 @@ public class Solicitud_Prestamo extends javax.swing.JFrame {
     private javax.swing.JButton btnsolicitud;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+  
+
 }

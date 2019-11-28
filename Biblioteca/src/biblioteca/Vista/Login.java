@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Usuario
+ * @author Estefania
  */
 public class Login extends javax.swing.JFrame {
     
@@ -138,15 +138,21 @@ public class Login extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         ConexionBD vc= new ConexionBD();
-        vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP","USERSETA","D4T4C3NT3R");
+        //vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP","USERSETA","D4T4C3NT3R");
+	vc.setConexionOracleXDefecto();
         metodos=new Controlador(vc);
         
         String usuario=txtUsuario.getText();
         String pass=txtContrasena.getText();
-        if (metodos.validarLogin(usuario,pass)){
+        int idUsuario = metodos.validarLogin(usuario,pass);
+        
+        if (idUsuario != 0){
             System.out.println("Ingreso Correcto");
             Solicitud_Prestamo sp = new Solicitud_Prestamo();
+            sp.setControlador(metodos);
+            sp.setIdUsuario(idUsuario);
             sp.setVisible(true);
+            
             this.setVisible(false);
         }else
         {

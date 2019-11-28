@@ -7,6 +7,7 @@ package biblioteca.Controlador;
 
 import biblioteca.Modelo.Libro;
 import biblioteca.Modelo.ConexionBD;
+import biblioteca.Modelo.Solicitud;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,18 +46,21 @@ public class Controlador {
         this.listaLibro = listaLibro;
     }
 
-    public boolean validarLogin(String usuario, String pass) {
-        boolean autenticado = false;
+    public int validarLogin(String usuario, String pass) {
+        int idUsuario = 0;
 
         try {
             Statement st = conexion.getConexion().createStatement();
-            ResultSet rs = st.executeQuery("SELECT PASS FROM USUARIO WHERE CEDULA='" + usuario + "' AND PASS='" + pass + "'");
-            autenticado = rs.next();
+            ResultSet rs = st.executeQuery("SELECT ID_USUARIO FROM USUARIO WHERE CEDULA='" + usuario + "' AND PASS='" + pass + "'");
+            if (rs.next()) {
+       
+                idUsuario= rs.getInt(1);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return autenticado;
+        return idUsuario;
     }
 
     public List<Libro> listaLibros(String titulo) {
@@ -78,13 +82,50 @@ public class Controlador {
 
     }
 
-    public void registrarSolicitud(int idLibro, String fechaDesde, String fechaHasta) {
-        conexion.sentenciasNoSelect("INSERT INTO SOLICITUD VALUES (" + idLibro 
-                + ",TRUNC(SYSDATE),TO_DATE('" + fechaDesde 
-                + "','DD/MM/YYYY'),TO_DATE('" + fechaHasta 
-                + "','DD/MM/YYYY'),SEQ_IDsolicitud.NEXTVAL)");
+    public void registrarSolicitud(int idLibro, String fechaDesde, String fechaHasta, int idUsuario,
+            int idBiblioteca, int idSatelite) {
+        conexion.sentenciasNoSelect("INSERT INTO SOLICITUD VALUES (" + idLibro
+                + ",TRUNC(SYSDATE),TO_DATE('" + fechaDesde
+                + "','DD/MM/YYYY'),TO_DATE('" + fechaHasta
+                + "','DD/MM/YYYY'),SEQ_IDsolicitud.NEXTVAL,"
+                + idUsuario + "," + idBiblioteca + "," + idSatelite + ")");
+    }
+    
+    
+    
+    public void registrarPrestamo(int idLibro, String fechaDesde, String fechaHasta,int idUsuario) {
+        conexion.sentenciasNoSelect("INSERT INTO PRESTAMO (ID, FECHA_SALIDA, FECHA_DEVOLUCION, USUARIO_ID) "
+                + "VALUES (SEQ_PRESTAMO.NEXTVAL"
+                + ",TO_DATE('" + fechaDesde
+                + "','DD/MM/YYYY'),TO_DATE('" + fechaHasta
+                + "','DD/MM/YYYY'),"+idUsuario+")");
     }
 
+    
+    
+    
+    public Solicitud findSolicitudById(int solicitudId){
+        Solicitud solicitud = null;
+        
+        try {
+            Statement st = conexion.getConexion().createStatement();
+            ResultSet rs = st.executeQuery("SELECT USUARIO_ID, RECURSO_ID, FECHADESDE, FECHAHASTA "
+                    + "FROM SOLICITUD WHERE ID_SOLICITUD=" +solicitudId);
+            if (rs.next()) {
+                solicitud = new Solicitud();
+                solicitud.setUsuarioId(rs.getInt(1));
+                solicitud.setRecursoId(rs.getInt(2));
+                solicitud.setFechaDesde(rs.getDate(3));
+                solicitud.setFechaHasta(rs.getDate(4));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return solicitud;
+    }   
+    
+    
     public ConexionBD getConexion() {
         return conexion;
     }

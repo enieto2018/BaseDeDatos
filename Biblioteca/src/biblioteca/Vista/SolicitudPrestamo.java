@@ -5,12 +5,26 @@
  */
 package biblioteca.Vista;
 
+import biblioteca.Controlador.Controlador;
+import biblioteca.Modelo.ConexionBD;
+import biblioteca.Modelo.Solicitud;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Usuario
+ * @author Estefania Nieto
  */
 public class SolicitudPrestamo extends javax.swing.JFrame {
 
+    private final String SOLICITUD_NO_ENCONTRADO = "Id de solicitud no encontrado";
+    
+    private final String INGRESE_ID_SOLICITUD = "Por favor ingrese el numero de la solicitud para buscar";
+    
+    Controlador controlador;
+    
+    int idUsuario;
     /**
      * Creates new form SolicitudPrestamo
      */
@@ -27,132 +41,221 @@ public class SolicitudPrestamo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lblid_solicitud = new javax.swing.JLabel();
-        txt_idsolicitud = new javax.swing.JTextField();
-        lblfechaentrega = new javax.swing.JLabel();
-        txtfechaentrega = new javax.swing.JTextField();
-        lblfechadevolucion = new javax.swing.JLabel();
-        txtfechadevolucion = new javax.swing.JTextField();
-        lblidusuario = new javax.swing.JLabel();
-        txtusuario = new javax.swing.JTextField();
-        txtfechasalida = new javax.swing.JTextField();
-        lblfechasalida = new javax.swing.JLabel();
-        btnregistrarprestamo = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblIdSolicitud = new javax.swing.JLabel();
+        txtIdSolicitud = new javax.swing.JTextField();
+        lblFechaDevolucion = new javax.swing.JLabel();
+        txtFechaDevolucion = new javax.swing.JTextField();
+        lblIdUsuario = new javax.swing.JLabel();
+        txtIdUsuario = new javax.swing.JTextField();
+        txtFechaSalida = new javax.swing.JTextField();
+        lblFechaSalida = new javax.swing.JLabel();
+        btnRegistrarPrestamo = new javax.swing.JButton();
+        lblIdLibro = new javax.swing.JLabel();
+        txtIdLibro = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PRESTAMO");
 
-        jLabel1.setText("PRESTAMO");
+        lblIdSolicitud.setText("IdSolicitud");
 
-        lblid_solicitud.setText("IdSolicitud");
+        txtIdSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdSolicitudActionPerformed(evt);
+            }
+        });
+        txtIdSolicitud.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdSolicitudKeyPressed(evt);
+            }
+        });
 
-        lblfechaentrega.setText("Fecha Entrega");
+        lblFechaDevolucion.setText("Fecha Devolucion");
 
-        lblfechadevolucion.setText("Fecha Devolucion");
+        lblIdUsuario.setText("IdUsuario");
 
-        lblidusuario.setText("IdUsuario");
+        lblFechaSalida.setText("Fecha Salida");
 
-        lblfechasalida.setText("Fecha Salida");
+        btnRegistrarPrestamo.setText("REGISTRAR PRESTAMO");
+        btnRegistrarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPrestamoActionPerformed(evt);
+            }
+        });
 
-        btnregistrarprestamo.setText("REGISTRAR");
+        lblIdLibro.setText("IdLibro");
 
-        jLabel2.setText("IdLibro");
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(lblIdSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtIdSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnregistrarprestamo))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblidusuario)
-                            .addComponent(lblid_solicitud))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_idsolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                            .addComponent(txtusuario)))
+                        .addComponent(lblIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblIdLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFechaDevolucion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFechaSalida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblfechadevolucion)
-                            .addComponent(lblfechasalida))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfechadevolucion)
-                            .addComponent(txtfechasalida)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblfechaentrega)
-                            .addComponent(jLabel2))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtfechaentrega)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))))
+                            .addComponent(txtFechaDevolucion)
+                            .addComponent(txtFechaSalida)
+                            .addComponent(txtIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnRegistrarPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblid_solicitud)
-                    .addComponent(txt_idsolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(lblIdSolicitud)
+                    .addComponent(txtIdSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblidusuario)
-                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                    .addComponent(lblIdUsuario)
+                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblfechaentrega)
-                    .addComponent(txtfechaentrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblfechadevolucion)
-                    .addComponent(txtfechadevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfechasalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblfechasalida))
+                    .addComponent(txtIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIdLibro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnregistrarprestamo)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaDevolucion)
+                    .addComponent(txtFechaDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaSalida))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarPrestamo)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtIdSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdSolicitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdSolicitudActionPerformed
+
+    private void btnRegistrarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPrestamoActionPerformed
+        // TODO add your handling code here:
+        ConexionBD vc = new ConexionBD();
+        vc.setConexionOracleXDefecto();
+        controlador.setConexion(vc);
+        
+        int idUsuario = Integer.parseInt(txtIdUsuario.getText().trim());
+        int idRecurso = Integer.parseInt(txtIdLibro.getText().trim());
+        
+        String fechaDesde = txtFechaSalida.getText().trim();
+        String fechaHasta = txtFechaDevolucion.getText().trim();
+        
+        if(!fechaDesde.equals("") && !fechaHasta.equals("")){
+            controlador.registrarPrestamo(idRecurso, fechaDesde, fechaHasta, idUsuario);
+            JOptionPane.showMessageDialog(null, "Prestamo registrado exitosamente",":D",JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "Las fechas de Salida y Devolución son obligatorias",":(",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        controlador.registrarPrestamo(idRecurso, fechaDesde, fechaHasta, idUsuario);
+        
+    }//GEN-LAST:event_btnRegistrarPrestamoActionPerformed
+
+    private void txtIdSolicitudKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdSolicitudKeyPressed
+        // TODO add your handling code here:
+        
+        
+       
+    }//GEN-LAST:event_txtIdSolicitudKeyPressed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        ConexionBD vc = new ConexionBD();
+        vc.setConexionOracleXDefecto();
+        controlador.setConexion(vc);
+        Solicitud solicitud = new Solicitud();
+        
+        String idSolicitud = txtIdSolicitud.getText().trim();
+        
+        if(!idSolicitud.equals("")){
+            solicitud = controlador.findSolicitudById(Integer.parseInt(idSolicitud));
+            
+            if(solicitud != null){
+                
+                DateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
+                txtIdLibro.setText(solicitud.getRecursoId()+"");
+                txtIdLibro.setEditable(false);
+                txtIdUsuario.setText(solicitud.getUsuarioId()+"");
+                txtIdUsuario.setEditable(false);
+                txtFechaSalida.setText(formato.format(solicitud.getFechaDesde())+"");
+                txtFechaDevolucion.setText(formato.format(solicitud.getFechaHasta())+"");
+            }else {
+                JOptionPane.showMessageDialog(null, SOLICITUD_NO_ENCONTRADO);
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, INGRESE_ID_SOLICITUD);
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnregistrarprestamo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblfechadevolucion;
-    private javax.swing.JLabel lblfechaentrega;
-    private javax.swing.JLabel lblfechasalida;
-    private javax.swing.JLabel lblid_solicitud;
-    private javax.swing.JLabel lblidusuario;
-    private javax.swing.JTextField txt_idsolicitud;
-    private javax.swing.JTextField txtfechadevolucion;
-    private javax.swing.JTextField txtfechaentrega;
-    private javax.swing.JTextField txtfechasalida;
-    private javax.swing.JTextField txtusuario;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnRegistrarPrestamo;
+    private javax.swing.JLabel lblFechaDevolucion;
+    private javax.swing.JLabel lblFechaSalida;
+    private javax.swing.JLabel lblIdLibro;
+    private javax.swing.JLabel lblIdSolicitud;
+    private javax.swing.JLabel lblIdUsuario;
+    private javax.swing.JTextField txtFechaDevolucion;
+    private javax.swing.JTextField txtFechaSalida;
+    private javax.swing.JTextField txtIdLibro;
+    private javax.swing.JTextField txtIdSolicitud;
+    private javax.swing.JTextField txtIdUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    
+ 
+    
+    
+    
 }

@@ -20,20 +20,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SolicitudLibro extends javax.swing.JFrame {
 
-    private Controlador capLibro;
-
+    private Controlador controlador;
+    
+    int idUsuario;
     /**
-     * @return the capLibro
+     * @return the controlador
      */
     public Controlador getCapLibro() {
-        return capLibro;
+        return controlador;
     }
 
     /**
-     * @param capLibro the capLibro to set
+     * @param capLibro the controlador to set
      */
     public void setCapLibro(Controlador capLibro) {
-        this.capLibro = capLibro;
+        this.controlador = capLibro;
     }
 
     /**
@@ -165,8 +166,8 @@ public class SolicitudLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         ConexionBD vc = new ConexionBD();
-        vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP", "USERSETA", "D4T4C3NT3R");
-        capLibro.setConexion(vc);
+        vc.setConexionOracleXDefecto();
+        controlador.setConexion(vc);
         String nombreLibro = txtnombreLibro.getText();
 
         List<Libro> list = getCapLibro().listaLibros(nombreLibro);
@@ -210,8 +211,8 @@ public class SolicitudLibro extends javax.swing.JFrame {
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         // TODO add your handling code here:
         ConexionBD vc = new ConexionBD();
-        vc.setConexionOracle("jdbc:oracle:thin:@172.17.1.25:1521:INGROUP", "USERSETA", "D4T4C3NT3R");
-        capLibro.setConexion(vc);
+        vc.setConexionOracleXDefecto();
+        controlador.setConexion(vc);
         
         int indexFilSelect=jtablibros.getSelectedRow();
         
@@ -220,17 +221,13 @@ public class SolicitudLibro extends javax.swing.JFrame {
         String fechadesde= txtfechaDesde.getText();
         String fechahasta= txtfechaHasta.getText();
         
-        capLibro.registrarSolicitud(Integer.parseInt(idlibro), fechadesde, fechahasta);
+        controlador.registrarSolicitud(Integer.parseInt(idlibro), fechadesde, fechahasta,
+                idUsuario, 1, 1);
         }else
         {
             JOptionPane.showMessageDialog(null, "Debe Seleccionar una fila");
         }
         
-        
-        
-        
-        
-      
     }//GEN-LAST:event_btnregistrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,4 +243,17 @@ public class SolicitudLibro extends javax.swing.JFrame {
     private javax.swing.JTextField txtfechaHasta;
     private javax.swing.JTextField txtnombreLibro;
     // End of variables declaration//GEN-END:variables
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+   
+    
+    
+
 }
